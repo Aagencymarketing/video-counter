@@ -12,8 +12,8 @@ export const sql =
   global.__sql ??
   postgres(url, {
     ssl: "require",
-    prepare: false,
-    max: 1,
+    prepare: false, // compat con serverless
+    max: 1          // 1 connessione per funzione
   });
 
 if (process.env.NODE_ENV !== "production") global.__sql = sql;
